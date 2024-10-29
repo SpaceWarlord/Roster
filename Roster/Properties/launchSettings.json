@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Roster (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Roster (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

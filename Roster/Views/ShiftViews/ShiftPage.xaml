@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Roster.Views.ShiftViews.ShiftPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Roster.Views.ShiftViews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:tableview="using:WinUI.TableView"
+    xmlns:models="using:Roster.Models" 
+    xmlns:viewModels="using:Roster.ViewModels"
+    xmlns:tv="using:WinUI.TableView" d:DataContext="{d:DesignInstance Type=models:Shift}"
+    x:Name="ThisPage">
+
+    <Grid Margin="40 40 20 80">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <Button x:Name="ForwardBtn" Content="&lt;" />
+            <Button x:Name="BackBtn" Content=">" />
+        </StackPanel>
+        <Button Content="+" FontSize="30" Grid.Row="0" Grid.Column="1" Click="ShowDialog_Click" HorizontalAlignment="Right"/>
+        <tv:TableView x:Name="shiftTable" ItemsSource="{x:Bind ViewModel.Shift}" SelectionMode="Extended"  Margin="16" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <tv:TableView.Columns>
+                <tv:TableViewTextColumn Header="Day" Binding="{Binding Day}" />
+                <tv:TableViewTextColumn Header="Start Time" Binding="{Binding StartTime}" />
+                <tv:TableViewTextColumn Header="Start End Time" Binding="{Binding EndTime}" />
+            </tv:TableView.Columns>
+        </tv:TableView>
+    </Grid>
+</Page>

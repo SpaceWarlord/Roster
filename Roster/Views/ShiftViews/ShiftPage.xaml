@@ -7,12 +7,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:tableview="using:WinUI.TableView"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"    
     xmlns:models="using:Roster.Models" 
-    xmlns:viewModels="using:Roster.ViewModels"
-    xmlns:tv="using:WinUI.TableView" d:DataContext="{d:DesignInstance Type=models:Shift}"
-    x:Name="ThisPage">
+    xmlns:viewModels="using:Roster.ViewModels"    
+    xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls" d:DataContext="{d:DesignInstance Type=models:Shift}"
+    x:Name="ThisPage"
+    Loaded="Page_Loaded">
 
     <Grid Margin="40 40 20 80">
         <Grid.ColumnDefinitions>
@@ -29,13 +29,24 @@
             <Button x:Name="ForwardBtn" Content="&lt;" />
             <Button x:Name="BackBtn" Content=">" />
         </StackPanel>
-        <Button Content="+" FontSize="30" Grid.Row="0" Grid.Column="1" Click="ShowDialog_Click" HorizontalAlignment="Right"/>
-        <tv:TableView x:Name="shiftTable" ItemsSource="{x:Bind ViewModel.Shift}" SelectionMode="Extended"  Margin="16" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <tv:TableView.Columns>
-                <tv:TableViewTextColumn Header="Day" Binding="{Binding Day}" />
-                <tv:TableViewTextColumn Header="Start Time" Binding="{Binding StartTime}" />
-                <tv:TableViewTextColumn Header="Start End Time" Binding="{Binding EndTime}" />
-            </tv:TableView.Columns>
-        </tv:TableView>
+        <Button Content="+" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"/>
+        <ctWinUI:DataGrid x:Name="DataGrid"
+                    AutoGenerateColumns="False"
+                    CanUserSortColumns="True"                                        
+                    SelectionMode="Single"
+                    IsReadOnly="True">
+            <ctWinUI:DataGrid.Columns>
+                <ctWinUI:DataGridTextColumn Header="Day"
+                                    Binding="{Binding Day}"
+                                    Tag="Day" />
+                <ctWinUI:DataGridComboBoxColumn Header="Start Time"
+                                        Binding="{Binding StartTime}"
+                                        Tag="Start Time" />
+                <ctWinUI:DataGridComboBoxColumn Header="End Time"
+                        Binding="{Binding EndTime}"
+                        Tag="End Time" />
+
+            </ctWinUI:DataGrid.Columns>
+        </ctWinUI:DataGrid>
     </Grid>
 </Page>

@@ -20,15 +20,14 @@ namespace Roster.ViewModels
 
         private User _user = new User();
         public User User => _user;
-
-        [ObservableProperty]
-        private ObservableCollection<User> _users;        
+        
+        public ObservableCollection<User> Users;        
 
         public UserViewModel()
         {            
-            _users = new ObservableCollection<User>();
+            Users = new ObservableCollection<User>();
             UpdateUsers(context.Users.ToList());
-            _users.CollectionChanged += this.OnCollectionChanged;            
+            Users.CollectionChanged += this.OnCollectionChanged;            
         }
 
         public void UpdateUsers(List<User> users)

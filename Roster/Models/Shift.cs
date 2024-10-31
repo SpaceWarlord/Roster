@@ -84,8 +84,7 @@ namespace Roster.Models
         */
         [ObservableProperty]
         private bool _caseNoteCompleted;
-
-        [ObservableProperty]
+        
         private ObservableCollection<ShiftWorker> _shiftWorkers;
         
         public int ClientId { get; set; } //1 client per shift

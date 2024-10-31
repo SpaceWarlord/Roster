@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:models="using:Roster.Models" 
     xmlns:viewModels="using:Roster.ViewModels"
-    xmlns:tv="using:WinUI.TableView" d:DataContext="{d:DesignInstance Type=models:Address}"
+    xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls" d:DataContext="{d:DesignInstance Type=models:Address}"        
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Margin="40 40 20 80">
@@ -27,16 +27,22 @@
             <Button x:Name="BackBtn" Content=">" />
         </StackPanel>
         <Button Content="+" FontSize="30" Grid.Row="0" Grid.Column="1" Click="ShowDialog_Click" HorizontalAlignment="Right"/>
-        <tv:TableView x:Name="clientsTable" ItemsSource="{x:Bind ViewModel.Addresses}" SelectionMode="Extended"  Margin="16" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <tv:TableView.Columns>
-                <tv:TableViewTextColumn Header="Name" Binding="{Binding Name}" />
-                <tv:TableViewTextColumn Header="Unit Num" Binding="{Binding UnitNum}" />
-                <tv:TableViewTextColumn Header="Street Num" Binding="{Binding StreetNum}" />
-                <tv:TableViewTextColumn Header="Street Name" Binding="{Binding StreetName}" />
-                <tv:TableViewTextColumn Header="Street Type" Binding="{Binding StreetType}" />
-                <tv:TableViewTextColumn Header="Suburb" Binding="{Binding Suburb}" />
-                <tv:TableViewTextColumn Header="City" Binding="{Binding City}" />
-            </tv:TableView.Columns>
-        </tv:TableView>
+        <ctWinUI:DataGrid x:Name="addressTable"
+    AutoGenerateColumns="False"
+    CanUserSortColumns="True"                                        
+    SelectionMode="Single"
+    ItemsSource="{x:Bind ViewModel.Addresses}"
+    IsReadOnly="True">
+            <ctWinUI:DataGrid.Columns>
+                <ctWinUI:DataGridTextColumn Header="Name" Binding="{Binding Name}" Tag="Name" />
+                <ctWinUI:DataGridComboBoxColumn Header="Unit Num" Binding="{Binding UnitNum}" Tag="Unit Num" />
+                <ctWinUI:DataGridComboBoxColumn Header="Street Num" Binding="{Binding StreetNum}" Tag="StreetNum" />
+                <ctWinUI:DataGridComboBoxColumn Header="Street Name" Binding="{Binding StreetName}" Tag="StreetName" />
+                <ctWinUI:DataGridComboBoxColumn Header="Street Type" Binding="{Binding StreetType}" Tag="StreetType" />
+                <ctWinUI:DataGridComboBoxColumn Header="Suburb" Binding="{Binding Suburb}" Tag="Suburb" />
+                <ctWinUI:DataGridComboBoxColumn Header="City" Binding="{Binding City}" Tag="City" />
+
+            </ctWinUI:DataGrid.Columns>
+        </ctWinUI:DataGrid>
     </Grid>
 </Page>

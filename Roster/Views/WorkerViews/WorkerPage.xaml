@@ -6,11 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:tableview="using:WinUI.TableView"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"    
     xmlns:models="using:Roster.Models" 
     xmlns:viewModels="using:Roster.ViewModels"
-    xmlns:tv="using:WinUI.TableView" d:DataContext="{d:DesignInstance Type=models:Worker}"
+    xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls" d:DataContext="{d:DesignInstance Type=models:Worker}"            
     x:Name="ThisPage">
 
     <Grid Margin="40 40 20 80">
@@ -29,14 +28,19 @@
             <Button x:Name="BackBtn" Content=">" />
         </StackPanel>
         <Button Content="+" FontSize="30" Grid.Row="0" Grid.Column="1" Click="ShowDialog_Click" HorizontalAlignment="Right"/>
-        <tv:TableView x:Name="workerTable" ItemsSource="{x:Bind ViewModel.Worker}" SelectionMode="Extended"  Margin="16" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <tv:TableView.Columns>
-                <tv:TableViewTextColumn Header="First Name" Binding="{Binding FirstName}" />
-                <tv:TableViewTextColumn Header="Last Name" Binding="{Binding LastName}" />
-                <tv:TableViewTextColumn Header="Nickname" Binding="{Binding Nickname}" />
-                <tv:TableViewTextColumn Header="Phone Number" Binding="{Binding Phone}" />
-                <tv:TableViewTextColumn Header="Email" Binding="{Binding Email}" />
-            </tv:TableView.Columns>
-        </tv:TableView>
+        <ctWinUI:DataGrid x:Name="addressTable"
+    AutoGenerateColumns="False"
+    CanUserSortColumns="True"                                        
+    SelectionMode="Single"
+    ItemsSource="{x:Bind ViewModel.Worker}"
+    IsReadOnly="True">
+            <ctWinUI:DataGrid.Columns>
+                <ctWinUI:DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Tag="FirstName" />
+                <ctWinUI:DataGridComboBoxColumn Header="Last Name" Binding="{Binding LastName}" Tag="LastName" />
+                <ctWinUI:DataGridComboBoxColumn Header="Nickname" Binding="{Binding Nickname}" Tag="Nickname" />
+                <ctWinUI:DataGridComboBoxColumn Header="Phone Number" Binding="{Binding Phone}" Tag="PhoneNumber" />
+                <ctWinUI:DataGridComboBoxColumn Header="Email" Binding="{Binding Email}" Tag="Email" />
+            </ctWinUI:DataGrid.Columns>
+        </ctWinUI:DataGrid>
     </Grid>
 </Page>

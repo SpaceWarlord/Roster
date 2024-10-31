@@ -14,15 +14,14 @@ using System.Drawing;
 namespace Roster.ViewModels
 {
     public partial class WorkerViewModel: BaseViewModel
-    {
-        [ObservableProperty]
-        private ObservableCollection<Worker> _worker;
+    {        
+        public ObservableCollection<Worker> Worker;
 
         public WorkerViewModel()
         {
-            _worker = new ObservableCollection<Worker>();
+            Worker = new ObservableCollection<Worker>();
             UpdateWorkers(context.Workers.ToList());
-            _worker.CollectionChanged += this.OnCollectionChanged;
+            Worker.CollectionChanged += this.OnCollectionChanged;
             //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();
         }
 

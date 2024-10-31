@@ -13,15 +13,14 @@ using System.Collections.Specialized;
 namespace Roster.ViewModels
 {
     public partial class AddressViewModel: BaseViewModel
-    {        
-        [ObservableProperty]
-        private ObservableCollection<Address> _addresses;
+    {                
+        public ObservableCollection<Address> Addresses;
 
         public AddressViewModel()
         {
-            _addresses = new ObservableCollection<Address>();
+            Addresses = new ObservableCollection<Address>();
             UpdateAddresses(context.Addresses.ToList());
-            _addresses.CollectionChanged += this.OnCollectionChanged;
+            Addresses.CollectionChanged += this.OnCollectionChanged;
             //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();
         }
 

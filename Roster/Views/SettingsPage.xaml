@@ -9,20 +9,11 @@
     
     
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:tableview="using:WinUI.TableView"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"    
     xmlns:models="using:Roster.Models" 
-    xmlns:viewModels="using:Roster.ViewModels"
-    xmlns:tv="using:WinUI.TableView" d:DataContext="{d:DesignInstance Type=models:Client}"
+    xmlns:viewModels="using:Roster.ViewModels"    
     x:Name="ThisPage">
-
     <Grid>
-        <tv:TableView x:Name="clientsTable" ItemsSource="{x:Bind ViewModel.Clients}" SelectionMode="Extended"  Margin="16" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <tv:TableView.Columns>
-                <tv:TableViewTextColumn Header="First Name" Binding="{Binding FirstName}" />
-                <tv:TableViewTextColumn Header="Last Name" Binding="{Binding LastName}" />
-                <tv:TableViewTextColumn Header="Nickname" Binding="{Binding Nickname}" />
-            </tv:TableView.Columns>
-        </tv:TableView>
+        
     </Grid>
 </Page>

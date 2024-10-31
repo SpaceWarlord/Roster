@@ -14,17 +14,16 @@ using System.Drawing;
 namespace Roster.ViewModels
 {
     public partial class ClientViewModel: BaseViewModel
-    {
-        [ObservableProperty]
-        private ObservableCollection<Client> _clients;
+    {        
+        public ObservableCollection<Client> Clients;
 
         public ClientViewModel()
         {
             Debug.WriteLine("ggg");
-            _clients = new ObservableCollection<Client>();
+            Clients = new ObservableCollection<Client>();
             Debug.WriteLine("hhh");
             UpdateClients(context.Clients.ToList());
-            _clients.CollectionChanged += this.OnCollectionChanged;
+            Clients.CollectionChanged += this.OnCollectionChanged;
             //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();
             Debug.WriteLine("kkk");
         }

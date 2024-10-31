@@ -33,6 +33,7 @@ namespace Roster.Views.ClientViews
             Client.FullName = string.Empty;
             Client.Gender = "M";
             Client.GenderPreference = string.Empty;
+            Client.Phone = "555555";
         }
 
         private void gender_SelectionChanged(object sender, SelectionChangedEventArgs e)

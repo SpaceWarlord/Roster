@@ -35,7 +35,7 @@ namespace Roster.Views.ClientViews
 
         private async void ShowDialog_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             AddClientDialog dialog = new AddClientDialog();
 
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
@@ -74,7 +74,7 @@ namespace Roster.Views.ClientViews
             {
                 //DialogResult.Text = "User cancelled the dialog";
             }
-            */
+            
         }
     }
 }

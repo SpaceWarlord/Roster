@@ -13,20 +13,24 @@ using System.Collections.Specialized;
 namespace Roster.ViewModels
 {
     public partial class ShiftViewModel: BaseViewModel
-    {
-        [ObservableProperty]
-        private ObservableCollection<Shift> _shift;
+    {        
+        public ObservableCollection<Shift> Shift;
 
         public ShiftViewModel()
         {
-            _shift = new ObservableCollection<Shift>();
-            UpdateShifts(context.Shifts.ToList());
-            Debug.WriteLine("total shifts " + _shift.Count);
-            _shift.CollectionChanged += this.OnCollectionChanged;
+            Shift = new ObservableCollection<Shift>();
+            
+            Debug.WriteLine("total shifts " + Shift.Count);
+            Shift.CollectionChanged += this.OnCollectionChanged;
             //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();
-            Debug.WriteLine("hhahah");
+            Debug.WriteLine("hhahah");            
+
         }
 
+        public void Loaded()
+        {
+            UpdateShifts(context.Shifts.ToList());
+        }
         public void UpdateShifts(List<Shift> shift)
         {
             Shift.Clear();

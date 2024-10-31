@@ -31,6 +31,7 @@ namespace Roster.Views.ShiftViews
             this.InitializeComponent();
             ViewModel = new ShiftViewModel();
             Debug.WriteLine("After the viewmodel");
+
         }
 
         private async void ShowDialog_Click(object sender, RoutedEventArgs e)
@@ -76,6 +77,11 @@ namespace Roster.Views.ShiftViews
                 //DialogResult.Text = "User cancelled the dialog";
             }
             */
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Loaded();
         }
     }
 }

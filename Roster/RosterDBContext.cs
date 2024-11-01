@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Reflection.Metadata;
 using Windows.Storage;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using EntityFramework.Exceptions.Sqlite;
 
 namespace Roster
 {
@@ -48,6 +49,7 @@ namespace Roster
             https://www.codeproject.com/Questions/5277740/UWP-data-binding-issue
             optionsBuilder.UseSqlite("Data Source=database27.db");
             optionsBuilder.EnableSensitiveDataLogging(true);
+            optionsBuilder.UseExceptionProcessor();
             //optionsBuilder.UseSqlite("Data Source=\\data\\database5.db");
             //Debug.WriteLine("Path is " + Path.Combine(AppContext.BaseDirectory, "\\Data\\database5.db"));
             //optionsBuilder.UseSqlite("Data Source=" + Path.Combine(AppContext.BaseDirectory, "\\Data\\database5.db"));                

@@ -26,7 +26,7 @@ namespace Roster.Views.ClientViews
     /// </summary>
     public sealed partial class AddClientDialog : ContentDialog
     {
-        public Client Client { get; } = new();
+        public ClientModel Client { get; } = new();
         public AddClientDialog()
         {
             this.InitializeComponent();

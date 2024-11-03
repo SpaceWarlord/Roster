@@ -41,7 +41,7 @@ namespace Roster
 
             Root.RequestedTheme = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
             //currentUserTextBlock.Text = (Application.Current as App)?.CurrentUser.Username;
-            currentUserTextBlock.Text = (Application.Current.Resources["currentUser"] as User).Username;
+            currentUserTextBlock.Text = (Application.Current.Resources["currentUser"] as UserModel).Username;
         }
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)

@@ -18,23 +18,23 @@ namespace Roster.ViewModels
     public partial class UserViewModel : BaseViewModel
     {       
 
-        private User _user = new User();
-        public User User => _user;
+        private UserModel _user = new UserModel();
+        public UserModel User => _user;
         
-        public ObservableCollection<User> Users;        
+        public ObservableCollection<UserModel> Users;        
 
         public UserViewModel()
         {            
-            Users = new ObservableCollection<User>();
+            Users = new ObservableCollection<UserModel>();
             UpdateUsers(context.Users.ToList());
             Users.CollectionChanged += this.OnCollectionChanged;            
         }
 
-        public void UpdateUsers(List<User> users)
+        public void UpdateUsers(List<UserModel> users)
         {
             Users.Clear();
             Debug.WriteLine("TTotal users: " + users.Count);
-            foreach (User user in users)
+            foreach (UserModel user in users)
             {
                 Debug.WriteLine("User: " + user.Username);
                 Users.Add(user);
@@ -48,7 +48,7 @@ namespace Roster.ViewModels
             if (e.NewItems != null)
             {
                 Debug.WriteLine("New items to add");
-                foreach (User newItem in e.NewItems)
+                foreach (UserModel newItem in e.NewItems)
                 {
                     Debug.WriteLine("New User: Id: " + newItem.Id + " Username " + newItem.Username);
                     //ModifiedItems.Add(newItem);
@@ -62,7 +62,7 @@ namespace Roster.ViewModels
 
             if (e.OldItems != null)
             {
-                foreach (User oldItem in e.OldItems)
+                foreach (UserModel oldItem in e.OldItems)
                 {
                     //ModifiedItems.Add(oldItem);
 
@@ -75,7 +75,7 @@ namespace Roster.ViewModels
         }
 
         [RelayCommand]
-        private void Login(User user)
+        private void Login(UserModel user)
         {
             Debug.WriteLine("Called Login");
             if (user != null)
@@ -103,7 +103,7 @@ namespace Roster.ViewModels
         }
 
         [RelayCommand]
-        private void DeleteUser(User user)
+        private void DeleteUser(UserModel user)
         {
             Users.Remove(user);
         }
@@ -125,7 +125,7 @@ namespace Roster.ViewModels
                 {
                     try
                     {
-                        context.Users.Remove(new User() { Id = id });
+                        context.Users.Remove((UserModel)new UserModel() { Id = id });
                         context.SaveChanges();
                     }
                     catch (System.Exception ex)
@@ -157,7 +157,7 @@ namespace Roster.ViewModels
                 Debug.WriteLine("string is " + username);
                 if (username != String.Empty)
                 {
-                    User user=new User(username);
+                    UserModel user=new UserModel(username);
                     /*
                     var user = new User()
                     {

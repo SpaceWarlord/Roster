@@ -36,7 +36,7 @@ namespace Roster
     {
         public Window LoginWindow;
         public Window MainWindow;
-        public User CurrentUser { get; set; } = null;
+        public UserModel CurrentUser { get; set; } = null;
 
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
@@ -65,20 +65,20 @@ namespace Roster
 
                 using (var reader = new StreamReader(path))
                 {                    
-                    List<Suburb> suburbs = new List<Suburb>();
+                    List<SuburbModel> suburbs = new List<SuburbModel>();
 
                     RosterDBContext context = new RosterDBContext();
                     using (context)
                     {
-                        DbSet<Suburb> c = context.Set<Suburb>();
+                        DbSet<SuburbModel> c = context.Set<SuburbModel>();
                         while (!reader.EndOfStream)
                         {
                             var line = reader.ReadLine();
                             var values = line.Split(',');
 
-                            suburbs.Add(new Suburb(values[1], values[0]));
+                            suburbs.Add(new SuburbModel(values[1], values[0]));
 
-                            c.Add(new Suburb(values[1], values[0]));
+                            c.Add(new SuburbModel(values[1], values[0]));
                         }
                         context.SaveChanges();
                         /*

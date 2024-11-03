@@ -24,7 +24,7 @@ namespace Roster.Views.WorkerViews
     /// </summary>
     public sealed partial class AddWorkerDialog : ContentDialog
     {
-        public Worker Worker { get; } = new();
+        public WorkerModel Worker { get; } = new();
         public AddWorkerDialog()
         {
             this.InitializeComponent();                        

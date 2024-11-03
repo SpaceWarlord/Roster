@@ -15,12 +15,12 @@ namespace Roster.ViewModels
 {
     public partial class ClientViewModel: BaseViewModel
     {        
-        public ObservableCollection<Client> Clients;
+        public ObservableCollection<ClientModel> Clients;
 
         public ClientViewModel()
         {
             Debug.WriteLine("ggg");
-            Clients = new ObservableCollection<Client>();
+            Clients = new ObservableCollection<ClientModel>();
             Debug.WriteLine("hhh");
             UpdateClients(context.Clients.ToList());
             Clients.CollectionChanged += this.OnCollectionChanged;
@@ -28,12 +28,12 @@ namespace Roster.ViewModels
             Debug.WriteLine("kkk");
         }
 
-        public void UpdateClients(List<Client> client)
+        public void UpdateClients(List<ClientModel> client)
         {
             Debug.WriteLine("iii");
             Clients.Clear();
             //Debug.WriteLine("TTotal users: " + users.Count);
-            foreach (Client c in client)
+            foreach (ClientModel c in client)
             {
                 Debug.WriteLine("Client: " + c.FirstName + " " + c.LastName);
                 Clients.Add(c);
@@ -48,7 +48,7 @@ namespace Roster.ViewModels
             if (e.NewItems != null)
             {
                 Debug.WriteLine("New items to add");
-                foreach (Client newItem in e.NewItems)
+                foreach (ClientModel newItem in e.NewItems)
                 {
                     Debug.WriteLine("New User: Id: " + newItem.Id + " First Name " + newItem.FirstName);
                     //ModifiedItems.Add(newItem);
@@ -62,7 +62,7 @@ namespace Roster.ViewModels
 
             if (e.OldItems != null)
             {
-                foreach (Client oldItem in e.OldItems)
+                foreach (ClientModel oldItem in e.OldItems)
                 {
                     //ModifiedItems.Add(oldItem);
 
@@ -75,16 +75,16 @@ namespace Roster.ViewModels
         }
 
         //public static Client CreateClient(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, IAddress address, byte riskCategory, string genderPreference) => new(firstName, lastName, nickname, gender, dob, email, phone, highlightColor, address, riskCategory, genderPreference);
-        public static Client CreateClient(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, Address address, byte riskCategory, string genderPreference) => new(firstName, lastName, nickname, gender, dob, email, phone, highlightColor, address, riskCategory, genderPreference);
+        public static ClientModel CreateClient(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, AddressModel address, byte riskCategory, string genderPreference) => new(firstName, lastName, nickname, gender, dob, email, phone, highlightColor, address, riskCategory, genderPreference);
 
         [RelayCommand]
-        public void AddClient(Client client)
+        public void AddClient(ClientModel client)
         {
             Debug.WriteLine("Called Add Client");
             Debug.WriteLine("name is " + client.FullName);
             if (client != null)
             {
-                Client c = new Client()
+                ClientModel c = new ClientModel()
                 {
                     FirstName = client.FirstName,
                     LastName = client.LastName,

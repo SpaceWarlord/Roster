@@ -27,7 +27,7 @@ namespace Roster.Views
         public HomePage()
         {
             this.InitializeComponent();
-            welcomeBox.Text = "Hello " + (Application.Current.Resources["currentUser"] as User).Username;
+            welcomeBox.Text = "Hello " + (Application.Current.Resources["currentUser"] as UserModel).Username;
         }
     }
 }

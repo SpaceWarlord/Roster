@@ -54,7 +54,7 @@
 
         <ListView x:Name="SuburbListView" Grid.Row="6" Grid.Column="1" ItemsSource="{x:Bind currentSuburbs, Mode=OneWay}" SelectionChanged="SuburbListView_SelectionChanged" Header="Client">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="m:Suburb">
+                <DataTemplate x:DataType="m:SuburbModel">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.3*"></ColumnDefinition>

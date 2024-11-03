@@ -6,26 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roster.Models
+namespace Roster.Entities
 {
-    public partial class WorkerCertificate: BaseModel
-    {
-        [ObservableProperty]
-        [NotifyDataErrorInfo]
+    public partial class WorkerCertificate
+    {       
         [Required(ErrorMessage = "Worker is Required")]
-        private WorkerModel _worker;
-
-        [ObservableProperty]
-        [NotifyDataErrorInfo]
+        public WorkerEntity Worker;
+        
         [Required(ErrorMessage = "Certificate is Required")]
-        private CertificateModel _certificate;
-
-        [ObservableProperty]
-        [NotifyDataErrorInfo]
+        public CertificateEntity Certificate;
+        
         [Required(ErrorMessage = "Date Obtained is Required")]
-        private DateOnly _dateObtained;
+        public DateOnly DateObtained;
 
-        public WorkerCertificate(WorkerModel worker, CertificateModel certificate, DateOnly dateObtained)
+        public WorkerCertificate(WorkerEntity worker, CertificateEntity certificate, DateOnly dateObtained)
         {
             Worker = worker;
             Certificate = certificate;

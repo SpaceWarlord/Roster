@@ -26,14 +26,14 @@ namespace Roster
         //public DbSet<RecipeUsage> RecipeUsage { get; set; }
 
         
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserModel> Users { get; set; }
         //public DbSet<Person> Persons { get; set; }
-        public DbSet<Worker> Workers { get; set; }
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<Shift> Shifts { get; set; }
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<WorkerModel> Workers { get; set; }
+        public DbSet<ClientModel> Clients { get; set; }
+        public DbSet<ShiftModel> Shifts { get; set; }
+        public DbSet<AddressModel> Addresses { get; set; }
         public DbSet<ShiftAddress> ShiftAddresseses { get; set; }
-        public DbSet<Suburb> Suburbs { get; set; }
+        public DbSet<SuburbModel> Suburbs { get; set; }
         
        
         public RosterDBContext()
@@ -42,14 +42,16 @@ namespace Roster
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
+            optionsBuilder.UseExceptionProcessor();            
+            optionsBuilder.UseSqlite("Data Source=database27.db");
+            optionsBuilder.EnableSensitiveDataLogging(true);
+
             //optionsBuilder.UseSqlite("Data Source=recipe.db");
 
             //await ApplicationData.Current.LocalFolder.CreateFileAsync("sqliteSample.db", CreationCollisionOption.OpenIfExists);
 
-            https://www.codeproject.com/Questions/5277740/UWP-data-binding-issue
-            optionsBuilder.UseSqlite("Data Source=database27.db");
-            optionsBuilder.EnableSensitiveDataLogging(true);
-            optionsBuilder.UseExceptionProcessor();
+            //https://www.codeproject.com/Questions/5277740/UWP-data-binding-issue
             //optionsBuilder.UseSqlite("Data Source=\\data\\database5.db");
             //Debug.WriteLine("Path is " + Path.Combine(AppContext.BaseDirectory, "\\Data\\database5.db"));
             //optionsBuilder.UseSqlite("Data Source=" + Path.Combine(AppContext.BaseDirectory, "\\Data\\database5.db"));                
@@ -60,7 +62,7 @@ namespace Roster
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.SetupContext(this.Database.IsSqlite()); // Identify if we are using a SQLite database
-            modelBuilder.Entity<User>().HasIndex(x => x.Username).IsUnique();
+            modelBuilder.Entity<UserModel>().HasIndex(x => x.Username).IsUnique();
             /*
             //https://learn.microsoft.com/en-us/ef/core/modeling/inheritance
             modelBuilder.Entity<Person>().UseTptMappingStrategy();
@@ -80,7 +82,7 @@ namespace Roster
 
             //Table Per Type TPT
             //https://www.learnentityframeworkcore.com/inheritance/table-per-type
-            modelBuilder.Entity<Person>().UseTptMappingStrategy();
+            modelBuilder.Entity<PersonModel>().UseTptMappingStrategy();
 
             /*
             modelBuilder.Entity<Shift>()

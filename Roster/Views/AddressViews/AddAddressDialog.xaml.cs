@@ -32,9 +32,9 @@ namespace Roster.Views.AddressViews
     public sealed partial class AddAddressDialog : ContentDialog
     {
         public RosterDBContext context;
-        public Address Address { get; } = new();
+        public AddressModel Address { get; } = new();
 
-        public List<Suburb> currentSuburbs = new List<Suburb> { };
+        public List<SuburbModel> currentSuburbs = new List<SuburbModel> { };
         public AddAddressDialog()
         {
             this.InitializeComponent();
@@ -74,7 +74,7 @@ namespace Roster.Views.AddressViews
         {
             if (SuburbListView.SelectedItem != null)
             {
-                Address.Suburb = (Suburb)SuburbListView.SelectedItem;
+                Address.Suburb = (SuburbModel)SuburbListView.SelectedItem;
                 Debug.WriteLine("selected suburb is " + Address.Suburb.Name);
                 Debug.WriteLine("selected client ID IS " + Address.Suburb.Id);
             }

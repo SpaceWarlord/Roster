@@ -14,11 +14,11 @@ namespace Roster.ViewModels
 {
     public partial class ShiftViewModel: BaseViewModel
     {        
-        public ObservableCollection<Shift> Shift;
+        public ObservableCollection<ShiftModel> Shift;
 
         public ShiftViewModel()
         {
-            Shift = new ObservableCollection<Shift>();
+            Shift = new ObservableCollection<ShiftModel>();
             
             Debug.WriteLine("total shifts " + Shift.Count);
             Shift.CollectionChanged += this.OnCollectionChanged;
@@ -31,11 +31,11 @@ namespace Roster.ViewModels
         {
             UpdateShifts(context.Shifts.ToList());
         }
-        public void UpdateShifts(List<Shift> shift)
+        public void UpdateShifts(List<ShiftModel> shift)
         {
             Shift.Clear();
             //Debug.WriteLine("TTotal users: " + users.Count);
-            foreach (Shift c in shift)
+            foreach (ShiftModel c in shift)
             {
                 //Debug.WriteLine("Shift: " + c.FirstName + " " + c.LastName);
                 Shift.Add(c);
@@ -49,7 +49,7 @@ namespace Roster.ViewModels
             if (e.NewItems != null)
             {
                 Debug.WriteLine("New items to add");
-                foreach (Shift newItem in e.NewItems)
+                foreach (ShiftModel newItem in e.NewItems)
                 {
                     //Debug.WriteLine("New User: Id: " + newItem.Id + " First Name " + newItem.FirstName);
                     //ModifiedItems.Add(newItem);
@@ -63,7 +63,7 @@ namespace Roster.ViewModels
 
             if (e.OldItems != null)
             {
-                foreach (Shift oldItem in e.OldItems)
+                foreach (ShiftModel oldItem in e.OldItems)
                 {
                     //ModifiedItems.Add(oldItem);
 
@@ -80,17 +80,17 @@ namespace Roster.ViewModels
             => new(startDate, endDate, startTime, endTime, travelTime, staff, client, location, caseNoteCompleted);
         */
 
-        public static Shift CreateShift(string startTime, string endTime, byte travelTime, short maxTravelDistance, ShiftAddress startLocation, ShiftAddress endLocation, char shiftType, bool reoccuring, Client client)
+        public static ShiftModel CreateShift(string startTime, string endTime, byte travelTime, short maxTravelDistance, ShiftAddress startLocation, ShiftAddress endLocation, char shiftType, bool reoccuring, ClientModel client)
             => new(startTime, endTime, travelTime, maxTravelDistance, startLocation, endLocation, shiftType,  reoccuring, client);
 
         [RelayCommand]
-        public void AddShift(Shift shift)
+        public void AddShift(ShiftModel shift)
         {
             Debug.WriteLine("Called Add Shift");
             //Debug.WriteLine("name is " + client.Name);
             if (shift != null)
             {
-                Shift i = new Shift()
+                ShiftModel i = new ShiftModel()
                 {                    
                     StartTime = shift.StartTime,
                     EndTime = shift.EndTime,

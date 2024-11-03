@@ -14,21 +14,21 @@ namespace Roster.ViewModels
 {
     public partial class AddressViewModel: BaseViewModel
     {                
-        public ObservableCollection<Address> Addresses;
+        public ObservableCollection<AddressModel> Addresses;
 
         public AddressViewModel()
         {
-            Addresses = new ObservableCollection<Address>();
+            Addresses = new ObservableCollection<AddressModel>();
             UpdateAddresses(context.Addresses.ToList());
             Addresses.CollectionChanged += this.OnCollectionChanged;
             //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();
         }
 
-        public void UpdateAddresses(List<Address> address)
+        public void UpdateAddresses(List<AddressModel> address)
         {
             Addresses.Clear();
             //Debug.WriteLine("TTotal users: " + users.Count);
-            foreach (Address a in address)
+            foreach (AddressModel a in address)
             {
                 //Debug.WriteLine("Address: " + c.FirstName + " " + c.LastName);
                 Addresses.Add(a);
@@ -42,7 +42,7 @@ namespace Roster.ViewModels
             if (e.NewItems != null)
             {
                 Debug.WriteLine("New items to add");
-                foreach (Address newItem in e.NewItems)
+                foreach (AddressModel newItem in e.NewItems)
                 {
                     //Debug.WriteLine("New User: Id: " + newItem.Id + " First Name " + newItem.FirstName);
                     //ModifiedItems.Add(newItem);
@@ -56,7 +56,7 @@ namespace Roster.ViewModels
 
             if (e.OldItems != null)
             {
-                foreach (Address oldItem in e.OldItems)
+                foreach (AddressModel oldItem in e.OldItems)
                 {
                     //ModifiedItems.Add(oldItem);
 
@@ -68,16 +68,16 @@ namespace Roster.ViewModels
             context.SaveChanges();
         }
 
-        public static Address CreateAddress(string name, string unitNum, string streetNum, string streetName, string streetType, Suburb suburb, string city) => new(name, unitNum, streetNum, streetName, streetType, suburb, city);
+        public static AddressModel CreateAddress(string name, string unitNum, string streetNum, string streetName, string streetType, SuburbModel suburb, string city) => new(name, unitNum, streetNum, streetName, streetType, suburb, city);
 
         [RelayCommand]
-        public void AddAddress(Address address)
+        public void AddAddress(AddressModel address)
         {
             Debug.WriteLine("Called Add Address");
             Debug.WriteLine("name is " + address.Name);
             if (address != null)
             {
-                Address a = new Address()
+                AddressModel a = new AddressModel()
                 {
                     Name = address.Name,
                     UnitNum = address.UnitNum,

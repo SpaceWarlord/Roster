@@ -48,7 +48,7 @@
         <CheckBox x:Name="ReoccuringShift" Grid.Row="4" Grid.Column="1" />
         <ListView x:Name="ClientListView" Grid.Row="5" Grid.Column="1" ItemsSource="{x:Bind currentClients, Mode=OneWay}" SelectionChanged="ClientListView_SelectionChanged" Header="Client">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="m:Client">
+                <DataTemplate x:DataType="m:ClientModel">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.3*"></ColumnDefinition>

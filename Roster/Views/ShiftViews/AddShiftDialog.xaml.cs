@@ -30,10 +30,10 @@ namespace Roster.Views.ShiftViews
     public sealed partial class AddShiftDialog : ContentDialog
     {
         public RosterDBContext context;
-        public Shift Shift { get; } = new();
+        public ShiftModel Shift { get; } = new();
 
-        public List<Worker> currentWorkers;
-        public List<Client> currentClients;
+        public List<WorkerModel> currentWorkers;
+        public List<ClientModel> currentClients;
         public AddShiftDialog()
         {
 
@@ -76,8 +76,8 @@ namespace Roster.Views.ShiftViews
             endTimeBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             BindingOperations.SetBinding(EndTimePicker, TimePicker.TimeProperty, endTimeBinding);
             */
-            currentClients = new List<Client>(context.Clients.ToList());
-            currentWorkers = new List<Worker>(context.Workers.ToList());    
+            currentClients = new List<ClientModel>(context.Clients.ToList());
+            currentWorkers = new List<WorkerModel>(context.Workers.ToList());    
             //StaffListView.DataContext = staff;
             //StaffDropDown.
             //Debug.WriteLine("total staff is " + staff.Count);
@@ -108,7 +108,7 @@ namespace Roster.Views.ShiftViews
         {
             if (ClientListView.SelectedItem != null)
             {
-                Shift.Client = (Client)ClientListView.SelectedItem;
+                Shift.Client = (ClientModel)ClientListView.SelectedItem;
                 Debug.WriteLine("selected client is " + Shift.Client.FullName);
                 Debug.WriteLine("selected client ID IS " + Shift.Client.Id);
             }

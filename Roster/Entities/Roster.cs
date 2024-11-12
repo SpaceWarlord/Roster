@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public partial class RosterEntity
+    public partial class Roster
     {
         private int Id;
         

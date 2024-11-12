@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public partial class CertificateEntity
+    public partial class Certificate
     {
         public int Id { get; set; }        
         public string Name;        
         public int CertLength;        
         public bool Infinite;
-        public CertificateEntity() { }
+        public Certificate() { }
 
 
-        public CertificateEntity(string name, int certLength, bool infinite)
+        public Certificate(string name, int certLength, bool infinite)
         {
             Name = name;
             CertLength = certLength;

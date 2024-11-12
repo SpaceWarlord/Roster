@@ -37,7 +37,7 @@ namespace Roster.Models
         {
 
         }
-        public UserModel(UserEntity userEntity)
+        public UserModel(User userEntity)
         {            
             Id = userEntity.Id;
            _username = userEntity.Username;

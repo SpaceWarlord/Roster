@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public interface IAddressEntity
+    public interface IAddress
     {
         public int Id { get; }
 
@@ -20,7 +20,7 @@ namespace Roster.Entities
         string StreetName { get; set; }
         string StreetType { get; set; }
         int SuburbId { get; set; }        
-        SuburbEntity Suburb { get; set; }        
+        Suburb Suburb { get; set; }        
         string City { get; set; }
     }
 }

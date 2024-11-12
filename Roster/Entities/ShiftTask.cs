@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public partial class ShiftTaskEntity
+    public partial class ShiftTask
     {        
         public int ShiftTaskId { get; set; }
 
@@ -19,9 +19,9 @@ namespace Roster.Entities
         
         [Required(ErrorMessage = "Description is Required")]
         public string Description;
-        public ShiftTaskEntity() { }
+        public ShiftTask() { }
 
-        public ShiftTaskEntity(string name, string description)
+        public ShiftTask(string name, string description)
         {
             Name = name;
             Description = description;

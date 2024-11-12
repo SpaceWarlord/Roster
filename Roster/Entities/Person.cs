@@ -14,7 +14,7 @@ using Windows.Networking;
 namespace Roster.Entities
 {
     [Index(nameof(Nickname), IsUnique = true)]
-    public abstract partial class PersonEntity
+    public abstract partial class Person
     {
         public int Id { get; set; }        
         public string FirstName;        
@@ -44,12 +44,12 @@ namespace Roster.Entities
         public string? Email;
 
         [ForeignKey("AddressId")] // for a shadow property to the Address ID FK
-        public virtual AddressEntity Address { get; set; }
+        public virtual Address Address { get; set; }
 
         
         public string? HighlightColor;
 
-        public PersonEntity(string firstName, string lastName, string nickname, string gender)
+        public Person(string firstName, string lastName, string nickname, string gender)
         {
             Debug.WriteLine("Adding person");
 
@@ -59,7 +59,7 @@ namespace Roster.Entities
             Gender = gender;
         }
 
-        public PersonEntity(string firstName, string lastName, string nickname, string gender, string dob, string phone, string email, Color? highlightColor)
+        public Person(string firstName, string lastName, string nickname, string gender, string dob, string phone, string email, Color? highlightColor)
         {            
             if (highlightColor == null) //https://stackoverflow.com/questions/4454336/can-i-specify-a-default-color-parameter-in-c-sharp-4-0
             {

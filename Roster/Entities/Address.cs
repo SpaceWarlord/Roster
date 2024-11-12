@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Roster.Entities
 {
     [Table("Address", Schema = "TPT")]
-    public partial class AddressEntity
+    public partial class Address
     {
 
         [Key]
@@ -22,12 +22,12 @@ namespace Roster.Entities
         public string StreetName;        
         public string StreetType;
         public int SuburbId {  get; set; }        
-        public SuburbEntity Suburb;        
+        public Suburb Suburb;        
         public string City;
         
-        public AddressEntity() { }
+        public Address() { }
 
-        public AddressEntity(string name, string? unitNum, string streetNum, string streetName, string streetType, SuburbEntity suburb, string city)
+        public Address(string name, string? unitNum, string streetNum, string streetName, string streetType, Suburb suburb, string city)
         {
             Name = name;
             UnitNum = unitNum;

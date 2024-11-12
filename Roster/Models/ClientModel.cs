@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using Roster.Entities;
 
 namespace Roster.Models
 {
@@ -32,7 +33,7 @@ namespace Roster.Models
         [ObservableProperty]
         private string? _genderPreference;
 
-
+        private Client _client;
 
 
         public ObservableCollection<ShiftModel> Shifts { get; set; }

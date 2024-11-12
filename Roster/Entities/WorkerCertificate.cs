@@ -11,15 +11,15 @@ namespace Roster.Entities
     public partial class WorkerCertificate
     {       
         [Required(ErrorMessage = "Worker is Required")]
-        public WorkerEntity Worker;
+        public Worker Worker;
         
         [Required(ErrorMessage = "Certificate is Required")]
-        public CertificateEntity Certificate;
+        public Certificate Certificate;
         
         [Required(ErrorMessage = "Date Obtained is Required")]
         public DateOnly DateObtained;
 
-        public WorkerCertificate(WorkerEntity worker, CertificateEntity certificate, DateOnly dateObtained)
+        public WorkerCertificate(Worker worker, Certificate certificate, DateOnly dateObtained)
         {
             Worker = worker;
             Certificate = certificate;

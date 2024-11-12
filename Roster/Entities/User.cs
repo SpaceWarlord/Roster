@@ -18,7 +18,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Roster.Entities
 {
     [Index(nameof(Username), IsUnique = true)]
-    public partial class UserEntity
+    public partial class User
     {
         public int Id { get; set; }
 
@@ -31,12 +31,12 @@ namespace Roster.Entities
         private ObservableCollection<UserSettings> _userSettings = new ObservableCollection<UserSettings>();
         */
 
-        public UserEntity()
+        public User()
         {
 
         }        
 
-        public UserEntity(string username)
+        public User(string username)
         {
             Username = username;
         }

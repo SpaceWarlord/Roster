@@ -14,20 +14,20 @@ namespace Roster.Entities
 {
 
     [Table("Worker", Schema = "TPT")]
-    public partial class WorkerEntity: PersonEntity
+    public partial class Worker: Person
     {
         public int WorkerId { get; protected set; }                
-        private List<CertificateEntity> Certificates;
+        private List<Certificate> Certificates;
 
 
-        public WorkerEntity(): base(string.Empty, string.Empty, string.Empty, string.Empty)
+        public Worker(): base(string.Empty, string.Empty, string.Empty, string.Empty)
         {
 
         }
 
         //bool hasManualHandlingCert = true;
 
-        public WorkerEntity(string firstName, string lastName, string nickname, string gender, string dob, string phone, string email, Color highlightColor) : base(firstName, lastName, nickname, gender, dob, phone, email, highlightColor)
+        public Worker(string firstName, string lastName, string nickname, string gender, string dob, string phone, string email, Color highlightColor) : base(firstName, lastName, nickname, gender, dob, phone, email, highlightColor)
         {           
             
         }

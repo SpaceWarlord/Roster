@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public class SuburbEntity
+    public class Suburb
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string PostCode { get; set; }
 
-        public SuburbEntity(string name, string postCode) 
+        public Suburb(string name, string postCode) 
         {
             Name = name;
             PostCode = postCode;

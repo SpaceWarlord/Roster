@@ -12,7 +12,7 @@ namespace Roster.Entities
 {
 
     [Table("ShiftWorker", Schema = "TPT")]
-    public partial class ShiftWorkerEntity
+    public partial class ShiftWorker
     {
         [Key]
         public int Id { get; set; }
@@ -20,13 +20,13 @@ namespace Roster.Entities
 
         
         [Required(ErrorMessage = "Shift is Required")]
-        private ShiftEntity Shift;
+        private Shift Shift;
 
         public int WorkerId {  get; set; }
 
         
         [Required(ErrorMessage = "Worker is Required")]
-        public WorkerEntity Worker;
+        public Worker Worker;
 
         
         public DateOnly StartDateTime;
@@ -35,16 +35,16 @@ namespace Roster.Entities
         public DateOnly EndDateTime;        
 
         
-        public ShiftAddressEntity? StartLocation;
+        public ShiftAddress? StartLocation;
 
         
-        public ShiftAddressEntity? EndLocation;
+        public ShiftAddress? EndLocation;
 
-        public ObservableCollection<RouteEntity> Routes { get; set; }
+        public ObservableCollection<Route> Routes { get; set; }
 
-        public ShiftWorkerEntity() { }
+        public ShiftWorker() { }
 
-        public ShiftWorkerEntity(ShiftEntity shift, WorkerEntity worker, DateOnly startDateTime, DateOnly endDateTime)
+        public ShiftWorker(Shift shift, Worker worker, DateOnly startDateTime, DateOnly endDateTime)
         {
             Shift = shift;
             Worker = worker;

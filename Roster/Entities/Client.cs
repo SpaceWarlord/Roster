@@ -15,7 +15,7 @@ namespace Roster.Entities
 {
 
     [Table("Client", Schema = "TPT")]
-    public partial class ClientEntity : PersonEntity
+    public partial class Client : Person
     {        
         /*
         [ObservableProperty]
@@ -29,13 +29,13 @@ namespace Roster.Entities
         
         public byte RiskCategory;        
         public string? GenderPreference;
-        public ObservableCollection<ShiftEntity> Shifts { get; set; }
-        public ClientEntity(): base(string.Empty, string.Empty, string.Empty, "", string.Empty, string.Empty, null, Color.Black)
+        public ObservableCollection<Shift> Shifts { get; set; }
+        public Client(): base(string.Empty, string.Empty, string.Empty, "", string.Empty, string.Empty, null, Color.Black)
         {
             
         }
 
-        public ClientEntity(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, AddressEntity clientAddress, byte riskCategory, string genderPreference) : base(firstName, lastName, nickname, gender, dob, email, phone, highlightColor)
+        public Client(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, Address clientAddress, byte riskCategory, string genderPreference) : base(firstName, lastName, nickname, gender, dob, email, phone, highlightColor)
         {
             Address = clientAddress;
             RiskCategory = riskCategory;

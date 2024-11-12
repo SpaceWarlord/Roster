@@ -10,41 +10,41 @@ using System.Threading.Tasks;
 namespace Roster.Entities
 {
     [Table("ClientAddress", Schema = "TPT")]
-    public class ClientAddressEntity : AddressEntity, IAddressEntity
+    public class ClientAddress : Address, IAddress
     {
-        int IAddressEntity.Id { get => AddressId; }
+        int IAddress.Id { get => AddressId; }
 
-        string IAddressEntity.AddressType
+        string IAddress.AddressType
         {
-            get => typeof(ClientAddressEntity).Name;
+            get => typeof(ClientAddress).Name;
         }
 
-        public virtual ClientEntity? Client { get; set; }
-        string IAddressEntity.Name {
-            get => typeof(AddressEntity).Name;
+        public virtual Client? Client { get; set; }
+        string IAddress.Name {
+            get => typeof(Address).Name;
             set => Name = value; 
         }
-        string IAddressEntity.UnitNum {
-            get => typeof(AddressEntity).Name;
+        string IAddress.UnitNum {
+            get => typeof(Address).Name;
             set => throw new NotImplementedException(); 
         }
-        string IAddressEntity.StreetNum { 
+        string IAddress.StreetNum { 
             get => throw new NotImplementedException(); 
             set => throw new NotImplementedException(); 
         }
-        string IAddressEntity.StreetName { 
+        string IAddress.StreetName { 
             get => throw new NotImplementedException(); 
             set => throw new NotImplementedException(); 
         }
-        string IAddressEntity.StreetType { 
+        string IAddress.StreetType { 
             get => throw new NotImplementedException(); 
             set => throw new NotImplementedException(); 
         }
-        SuburbEntity IAddressEntity.Suburb { 
+        Suburb IAddress.Suburb { 
             get => throw new NotImplementedException(); 
             set => throw new NotImplementedException();
         }
-        string IAddressEntity.City { 
+        string IAddress.City { 
             get => throw new NotImplementedException(); 
             set => throw new NotImplementedException(); 
         }

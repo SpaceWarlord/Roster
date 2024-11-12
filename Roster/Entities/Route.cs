@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public partial class RouteEntity
+    public partial class Route
     {
         [Key]
         public int RouteId { get; set; }
         public string Name {  get; set; }
         [ForeignKey("StartAddressId")] // Shadow FK
-        public virtual AddressEntity StartAddress { get; set; }
+        public virtual Address StartAddress { get; set; }
         [ForeignKey("EndAddressId")] // Shadow FK
-        public virtual AddressEntity EndAddress { get; set; }
+        public virtual Address EndAddress { get; set; }
         public float Distance {  get; set; }
 
-        public RouteEntity() { }
-        public RouteEntity(string name, AddressEntity startAddress, AddressEntity endAddress, float distance)
+        public Route() { }
+        public Route(string name, Address startAddress, Address endAddress, float distance)
         {
             Name = name;
             StartAddress = startAddress;

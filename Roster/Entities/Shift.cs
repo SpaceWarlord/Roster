@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    public partial class ShiftEntity
+    public partial class Shift
     {
         [Key]
         public int ShiftId { get; protected set; }
@@ -45,10 +45,10 @@ namespace Roster.Entities
         //public virtual ShiftAddress EndLocation { get; set; }
 
         [ForeignKey("StartAddressId")] // Shadow FK
-        public virtual AddressEntity StartLocation { get; set; }
+        public virtual Address StartLocation { get; set; }
 
         [ForeignKey("EndAddressId")] // Shadow FK
-        public virtual AddressEntity EndLocation { get; set; }
+        public virtual Address EndLocation { get; set; }
 
         
         public byte TravelTime;
@@ -85,12 +85,12 @@ namespace Roster.Entities
         
         public bool CaseNoteCompleted;
         
-        public ObservableCollection<ShiftWorkerEntity> ShiftWorkers;
+        public ObservableCollection<ShiftWorker> ShiftWorkers;
         
         public int ClientId { get; set; } //1 client per shift
-        public ClientEntity Client { get; set; } = null;  
+        public Client Client { get; set; } = null;  
 
-        public ObservableCollection<RouteEntity> Routes { get; set; }
+        public ObservableCollection<Route> Routes { get; set; }
         /*
         [NotMapped]
         public DateTimeOffset StartDateTemp
@@ -160,10 +160,10 @@ namespace Roster.Entities
             }
         }
         */
-        public ShiftEntity() { }
+        public Shift() { }
 
         //public Shift(string startDate, string endDate, string startTime, string endTime, int travelTime, Staff staff, Client client, Location location, bool caseNoteCompleted)
-        public ShiftEntity(string startTime, string endTime, byte travelTime, short maxTravelDistance, ShiftAddressEntity startLocation, ShiftAddressEntity endLocation, char shiftType, bool reocurring, ClientEntity client)
+        public Shift(string startTime, string endTime, byte travelTime, short maxTravelDistance, ShiftAddress startLocation, ShiftAddress endLocation, char shiftType, bool reocurring, Client client)
         {                        
             StartTime = startTime;
             EndTime = endTime;

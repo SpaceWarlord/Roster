@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Roster.Entities
 {
-    internal class WorkerSkillsEntity 
+    public class ShiftWorkerAddress
     {
+        public ShiftWorkerAddress() { }
     }
 }

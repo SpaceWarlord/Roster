@@ -15,30 +15,25 @@ namespace Roster.ViewModels
 {
     public partial class ClientViewModel: BaseViewModel
     {        
-        public ObservableCollection<ClientModel> Clients;
+        public ObservableCollection<ClientXViewModel> Clients;
 
         public ClientViewModel()
-        {
-            Debug.WriteLine("ggg");
-            Clients = new ObservableCollection<ClientModel>();
-            Debug.WriteLine("hhh");
+        {            
+            Clients = new ObservableCollection<ClientXViewModel>();            
             UpdateClients(context.Clients.ToList());
             Clients.CollectionChanged += this.OnCollectionChanged;
-            //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();
-            Debug.WriteLine("kkk");
+            //Categories = context.IngredientCategories.Where(p => p.ParentId != null).ToList();            
         }
 
-        public void UpdateClients(List<ClientModel> client)
-        {
-            Debug.WriteLine("iii");
+        public void UpdateClients(List<ClientXViewModel> client)
+        {           
             Clients.Clear();
             //Debug.WriteLine("TTotal users: " + users.Count);
-            foreach (ClientModel c in client)
+            foreach (ClientXViewModel c in client)
             {
                 Debug.WriteLine("Client: " + c.FirstName + " " + c.LastName);
                 Clients.Add(c);
-            }
-            Debug.WriteLine("jjj");
+            }            
         }
 
         void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -75,10 +70,10 @@ namespace Roster.ViewModels
         }
 
         //public static Client CreateClient(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, IAddress address, byte riskCategory, string genderPreference) => new(firstName, lastName, nickname, gender, dob, email, phone, highlightColor, address, riskCategory, genderPreference);
-        public static ClientModel CreateClient(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, AddressModel address, byte riskCategory, string genderPreference) => new(firstName, lastName, nickname, gender, dob, email, phone, highlightColor, address, riskCategory, genderPreference);
+        public static ClientXViewModel CreateClient(string firstName, string lastName, string nickname, string gender, string dob, string email, string phone, Color highlightColor, AddressModel address, byte riskCategory, string genderPreference) => new(firstName, lastName, nickname, gender, dob, email, phone, highlightColor, address, riskCategory, genderPreference);
 
         [RelayCommand]
-        public void AddClient(ClientModel client)
+        public void AddClient(ClientXViewModel client)
         {
             Debug.WriteLine("Called Add Client");
             Debug.WriteLine("name is " + client.FullName);
